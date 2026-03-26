@@ -19,9 +19,10 @@ def initialize():
         rick_db = User.model_validate(rick)
         sally = RegularUserCreate(username='sally', email='sally@mail.com', password=encrypt_password('sallypass'))
         sally_db = User.model_validate(sally)
+        pam = AdminCreate(username='pam', email='pam@mail.com', password=encrypt_password('pampass'))
+        pam_db = User.model_validate(pam)
 
-
-        db.add_all([bob_db, rick_db, sally_db])  #add all can save multiple objects at once
+        db.add_all([bob_db, rick_db, sally_db, pam_db])  #add all can save multiple objects at once
         db.commit()
 
         with open('todos.csv') as file:
